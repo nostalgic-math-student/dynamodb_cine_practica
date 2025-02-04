@@ -3,7 +3,7 @@
 
 ### Idea:
 
-Se creó una lambda_function en AWS para insertar datos de funciones de cine en una tabla de DynamoDB llamada "Peliculas_S3D2_xideral",
+Se creó una lambda_function en AWS para insertar datos de funciones de cine en una tabla de DynamoDB llamada "Peliculas_S3D2_xideral" (Oculto mediante una variable de env),
 Esta función lambda recibe un objeto el cual puede tener datos o no, esto da dos casos de uso:
 
 #### Caso 1:
