@@ -3,6 +3,7 @@ import boto3
 import datetime
 import random
 from random import randint
+import os
 
 # Funcion auxiliar para generar fecha al azar entre hoy y total_days 
 # Output ISO 8601
@@ -14,7 +15,8 @@ def random_date(total_days):
 
 def lambda_handler(event, context):
     dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
-    table = dynamodb.Table('Peliculas_S3D2_xideral')
+    table_name = os.getenv("DB_TABLE_NAME")
+    table = dynamodb.Table(table_name)
 
     # Utilizamos dos casos: 
     # Caso 1: si se ejecuta lambda con información (pelicula_id, fecha_hora en ISO format, nombre,sala,duracion,clasificacion)
@@ -71,4 +73,3 @@ def lambda_handler(event, context):
             'statusCode': 500,
             'body': json.dumps({"error": str(e)})
         }
-
